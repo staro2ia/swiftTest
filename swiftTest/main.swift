@@ -19,8 +19,12 @@ let discremenant = {
 
 let squreRoots = {
     (a: Double, b: Double, c: Double) -> ( Bool, Double, Double) in
-    return discremenant(a, b, c) < 0 ? ( true, (-b / (2*a) ), sqrt(-discremenant(a, b, c)) / (2*a) )
-        : (false, (-b - sqrt(discremenant(a, b, c)) / (2*a), (-b + sqrt(discremenant(a, b, c)) /  (2*a) ) ) )
+    let discremenantValue = discremenant(a, b, c)
+    if discremenantValue < 0 {
+        return ( true, (-b / (2*a) ), sqrt(-discremenantValue) / (2*a) )
+    } else {
+        return (false, (-b - sqrt(discremenantValue) ) / (2*a), (-b + sqrt(discremenantValue) ) /  (2*a) )
+    }
 }
 
 print("\(squreRoots(2, 10, 4))")
